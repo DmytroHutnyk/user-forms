@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Input from "@/components/Input.jsx";
 
 export default function StateLogin() {
     const [form, setForm] = useState({
@@ -41,27 +42,24 @@ export default function StateLogin() {
             <h2>Login</h2>
 
             <div className="control-row">
-                <div className="control no-margin">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        onBlur={handleInputBlur}
-                        value={form.email}
-                        onChange={handleChange} />
-                </div>
-                <div className="control-error">{emailIsInvalid && <p>Please enter a valid email address</p>}</div>
+                <Input
+                    label="Email"
+                    id="email"
+                    name="email"
+                    type="email"
+                    onBlur={handleInputBlur}
+                    value={form.email}
+                    onChange={handleChange}
+                />
 
-                <div className="control no-margin">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        value={form.password}
-                        onChange={handleChange}/>
-                </div>
+                <Input
+                    label="Password"
+                    id="password"
+                    name="password"
+                    type="password"
+                    value={form.password}
+                    onChange={handleChange}
+                />
             </div>
 
             <p className="form-actions">
