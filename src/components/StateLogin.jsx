@@ -50,6 +50,7 @@ export default function StateLogin() {
                     onBlur={handleInputBlur}
                     value={form.email}
                     onChange={handleChange}
+                    error={emailIsInvalid && 'Please enter a valid email'}
                 />
 
                 <Input
