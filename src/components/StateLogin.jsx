@@ -6,7 +6,12 @@ export default function StateLogin() {
         password: ""
     });
 
-    const emailIsInvalid = form.email !== '' && !form.email.includes('@');
+    const [didEdit, setDidEdit] = useState({
+        email: false,
+        password: false
+    })
+
+    const emailIsInvalid = didEdit.email && !form.email.includes('@');
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -23,6 +28,14 @@ export default function StateLogin() {
         console.log("Submitted", form);
     }
 
+    function handleInputBlur(e){
+        const {name} = e.target;
+        setDidEdit(prev => ({
+            ...prev,
+            [name]: true
+        }))
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <h2>Login</h2>
@@ -34,6 +47,7 @@ export default function StateLogin() {
                         id="email"
                         name="email"
                         type="email"
+                        onBlur={handleInputBlur}
                         value={form.email}
                         onChange={handleChange} />
                 </div>
